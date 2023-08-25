@@ -90,13 +90,14 @@ function getCurrentLocation() {
     // Get a reference to the database service
     const database = firebase.database();
 
-    // Get a reference to the users node
-    const userRef = database.ref('users'+ user.uid);
 
     // Get the currently signed-in user
     const user = firebase.auth().currentUser;
     if (user) {
       // The user is signed in
+
+      // Get a reference to the users node
+      const userRef = database.ref('users'+ user.uid);
 
       userRef.transaction((currentData) => {
         if (currentData === null || !currentData.email) {
