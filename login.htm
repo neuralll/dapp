@@ -104,7 +104,7 @@
       const userRef = database.ref('users/'+ user.uid);
       userRef.transaction((currentData) => {
         if (email.length &&( currentData === null || !currentData.email)) {
-          return { email: email };
+          return { uid: user.uid, email: email };
         }
       });
       //Set the user's latitude and longitude values
