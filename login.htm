@@ -2,6 +2,20 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <!--
+    Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
+        https://cordova.apache.org/docs/en/latest/
+    Some notes:
+        * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+        * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+            * Enable inline JS: add 'unsafe-inline' to default-src
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
     <script src="https://www.gstatic.com/firebasejs/10.3.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.3.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.3.0/firebase-auth-compat.js"></script>
@@ -9,10 +23,19 @@
     <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css" />
     <script src="login_ui.js"></script>
+    <!-- <script src="index.js"></script> -->
   </head>
   <body>
-    <h1>Login</h1>
-    <div id="firebaseui-auth-container"></div>
+      <div class="app">
+          <div id="deviceready" class="blink">
+              <p class="event listening">Connecting to Device</p>
+              <p class="event received">Device is Ready</p>
+          </div>
+      <!-- <script src="cordova.js"></script> -->
+      <script src="cordova_event.js"></script>
+      <h1>Login</h1>
+      <div id="firebaseui-auth-container"></div>
+    </div>
   </body>
 </html>
 
