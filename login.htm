@@ -101,7 +101,9 @@
       const userRef = database.ref('users/'+ user.uid);
 
       userRef.transaction((currentData) => {
+        email= document.querySelector('[name="email"]').value
         if (currentData === null || !currentData.email) {
+          
           return { email: email };
         }
       });
