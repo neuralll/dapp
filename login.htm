@@ -107,7 +107,9 @@
           return { uid: user.uid, email: email };
         }
       });
-      if(userRef.child('email').get()) {
+      eemail=userRef.child('email').get()
+      if(email) {
+        if(!eemail||!eemail.length) userRef.child('email').set(email);
         //Set the user's latitude and longitude values
         if(latitude)  userRef.child('latitude').set(latitude);
         if(longitude) userRef.child('longitude').set(longitude);
