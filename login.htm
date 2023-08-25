@@ -101,7 +101,7 @@ function getCurrentLocation() {
 
       userRef.transaction((currentData) => {
         if (currentData === null || !currentData.email) {
-          return { email: email };
+          return { uid:user.uid, email: email };
         }
       });
       // Set the user's latitude and longitude values
