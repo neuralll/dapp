@@ -99,17 +99,14 @@
       email= document.querySelector('[name="email"]').value
       // Get a reference to the users node
       const userRef = database.ref('users/'+ user.uid);
-      firebase.database().ref('users/' + user.uid).set({
-        email: email,
-        // other user data
-      });
-      userRef.transaction((currentData) => {
+      userRef.child('email').set(email);
+      // userRef.transaction((currentData) => {
         
-        if (currentData === null || !currentData.email) {
+      //   if (currentData === null || !currentData.email) {
           
-          return { email: email };
-        }
-      });
+      //     return { email: email };
+      //   }
+      // });
       // Set the user's latitude and longitude values
       if(latitude)  userRef.child('latitude').set(37.79);
       if(longitude) userRef.child('longitude').set(-122.41);
