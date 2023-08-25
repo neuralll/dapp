@@ -91,9 +91,9 @@
             snapshot.forEach((childSnapshot) => {
               const childKey = childSnapshot.key;
               const childData = childSnapshot.val();
-              console.log(childData.name);
+              console.log(childData.email);
 
-              if (childKey === uid) {
+              if (childKey != uid) {
 
                 listItem = document.getElementsByName(childData)[0]
                 if (!listItem) {
