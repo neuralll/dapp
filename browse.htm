@@ -91,6 +91,7 @@
             snapshot.forEach((childSnapshot) => {
               const childKey = childSnapshot.key;
               const childData = childSnapshot.val();
+              console.log(childData.name);
 
               if (childKey === uid) {
 
@@ -98,7 +99,7 @@
                 if (!listItem) {
                   // Create a new list item element
                   const listItem = document.createElement('li');
-                  listItem.name=childData
+                  listItem.name=childData.name
                   listItem.classList.add('list-item');
 
                   // Create a span element for the user name
