@@ -31,7 +31,9 @@
         background-color: white;
         height: calc(4rem);
       }
-      
+      .selected {
+       background-color: lightgray;
+      }
       /* Make the list cover the whole screen except the top bar */
       .list-container {
         height: calc(100vh - 4rem);
@@ -70,6 +72,13 @@
       </ul>
     </div>
     <script>
+      function selectRow(row) {
+        var rows = document.querySelectorAll("li");
+        for (var i = 0; i < rows.length; i++) {
+          rows[i].classList.remove("selected");
+        }
+        row.classList.add("selected");
+      }
       function renderusers() {
         // Get a reference to the database service
         const database = firebase.database();
@@ -91,7 +100,6 @@
             snapshot.forEach((childSnapshot) => {
               const childKey = childSnapshot.key;
               const childData = childSnapshot.val();
-              console.log(childData.email);
 
               if (childKey != uid) {
 
@@ -99,6 +107,7 @@
                 if (!listItem) {
                   // Create a new list item element
                   const listItem = document.createElement('li');
+                  listItem.onclick="selectRow(this)"
                   listItem.name=childData.email
                   listItem.classList.add('list-item');
 
