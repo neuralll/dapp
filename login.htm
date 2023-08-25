@@ -68,8 +68,42 @@
       <!-- <div id="firebaseui-auth-container"></div> -->
     </div>
   </body>
-
 <script>
+  
+function getCurrentLocation() {
+  return new Promise((resolve, reject) => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        resolve({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        });
+      }, (error) => {
+        reject(error);
+      });
+    } else {
+      reject(new Error("Geolocation is not supported by this browser."));
+    }
+  });
+}
+  function update() {
+    // Get a reference to the database service
+    const database = firebase.database();
+
+    // Get a reference to the users node
+    const usersRef = database.ref('users');
+
+    // Get the currently signed-in user
+    const user = firebase.auth().currentUser;
+    if (user) {
+      // The user is signed in
+      const uid = user.uid;
+
+      // Set the user's latitude and longitude values
+      usersRef.child(uid).child('latitude').set(37.79);
+      usersRef.child(uid).child('longitude').set(-122.41);
+    }
+  }
   function login() {
     email= document.querySelector('[name="email"]').value
     password= document.querySelector('[name="pass"]').value

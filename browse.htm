@@ -3,14 +3,130 @@
   <head>
     <meta charset="UTF-8">
     <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.3.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth-compat.js"></script>
     <script src="login_init.js"></script>
-    <script src="login_status.js"></script>
+
+    <!-- Import the milligram.io CSS library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+
+    <!-- Define some custom styles -->
+    <style>
+      /* Hide the scrollbars for the html and body elements */
+      html::-webkit-scrollbar,
+      body::-webkit-scrollbar {
+        display: none;
+      }
+      html,
+      body {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        margin:0;padding:0
+      }
+      /* Make the top bar sticky */
+      .top-bar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: white;
+        height: calc(4rem);
+      }
+      
+      /* Make the list cover the whole screen except the top bar */
+      .list-container {
+        height: calc(100vh - 4rem);
+        overflow-y: auto;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        padding:5px
+      }
+  
+      .list-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+  
+      .mute-icon {
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f6a9";
+      }
+    </style>
   </head>
   <body>
-    <h1>Browse</h1>
-    <div id="sign-in-status"></div>
-    <div id="sign-in"></div>
-    <pre id="account-details"></pre>
+
+  <!-- Create a top bar with a settings icon -->
+  <div class="row top-bar">
+    <div class="column column-90"></div>
+    <div class="column column-10">
+      <button class="button-clear"><i class="fa fa-cog"></i></button>
+    </div>
+  </div>
+  <!-- Create a list of users in a scrollable grid -->
+  <div class="row list-container">
+    <div class="column column-100">
+      <ul class="list">
+      </ul>
+    </div>
+    <script>
+      function renderusers() {
+        // Get a reference to the database service
+        const database = firebase.database();
+
+        // Get a reference to the users node
+        const usersRef = database.ref('users');
+
+        // Get the currently signed-in user
+        const user = firebase.auth().currentUser;
+        if (user) {
+          // The user is signed in
+          const uid = user.uid;
+
+          // Get the list element
+          const list = document.querySelector('.list');
+
+          // Get a list of visible / nearby other users
+          usersRef.orderByKey().once('value', (snapshot) => {
+            snapshot.forEach((childSnapshot) => {
+              const childKey = childSnapshot.key;
+              const childData = childSnapshot.val();
+
+              if (childKey === uid) {
+
+                listItem = document.getElementsByName(childData)[0]
+                if (!listItem) {
+                  // Create a new list item element
+                  const listItem = document.createElement('li');
+                  listItem.name=childData
+                  listItem.classList.add('list-item');
+
+                  // Create a span element for the user name
+                  const nameSpan = document.createElement('span');
+                  nameSpan.textContent = childData;
+
+                  // Create a span element for the mute icon
+                  const muteSpan = document.createElement('span');
+                  muteSpan.classList.add('mute-icon');
+
+                  // Append the name and mute spans to the list item
+                  listItem.appendChild(nameSpan);
+                  listItem.appendChild(muteSpan);
+
+                  // Append the list item to the list
+                  list.appendChild(listItem);
+                } else{
+                  listItem.name=childData
+                }
+              }
+
+            });
+          });
+        
+        }
+
+      }
+
+    </script>
   </body>
 </html>
