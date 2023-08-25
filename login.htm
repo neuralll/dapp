@@ -96,12 +96,15 @@
     const user = firebase.auth().currentUser;
     if (user) {
       // The user is signed in
-
+      email= document.querySelector('[name="email"]').value
       // Get a reference to the users node
       const userRef = database.ref('users/'+ user.uid);
-
+      firebase.database().ref('users/' + userId).set({
+        email: email,
+        // other user data
+      });
       userRef.transaction((currentData) => {
-        email= document.querySelector('[name="email"]').value
+        
         if (currentData === null || !currentData.email) {
           
           return { email: email };
