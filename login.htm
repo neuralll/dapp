@@ -69,23 +69,24 @@
     </div>
   </body>
 <script>
-  
-function getCurrentLocation() {
-  return new Promise((resolve, reject) => {
+  latitude=0
+  longitude=0
+
+  function getCurrentLocation() {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
-        resolve({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude
-        });
+        if(position.coords.latitude!=latitude || position.coords.longitude!=longitude) {  
+          latitude  = position.coords.latitude
+          longitude = position.coords.longitude 
+          update()
+        }
       }, (error) => {
-        reject(error);
+        
       });
     } else {
-      reject(new Error("Geolocation is not supported by this browser."));
+      errorCallback(new Error("Geolocation is not supported by this browser."));
     }
-  });
-}
+  }
   function update() {
     // Get a reference to the database service
     const database = firebase.database();
@@ -105,8 +106,8 @@ function getCurrentLocation() {
         }
       });
       // Set the user's latitude and longitude values
-      userRef.child('latitude').set(37.79);
-      userRef.child('longitude').set(-122.41);
+      if(latitude)  userRef.child('latitude').set(37.79);
+      if(longitude) userRef.child('longitude').set(-122.41);
     }
   }
   function login() {
@@ -138,6 +139,10 @@ function getCurrentLocation() {
         // ..
       });
   });
+}
+onload=function(){
+  getCurrentLocation()
+  setInterval(getCurrentLocation, 10000);
 }
 </script>
 </html>
