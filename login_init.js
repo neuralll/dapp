@@ -10,5 +10,4 @@
 };
 
 firebaseApp = firebase.initializeApp(firebaseConfig);
-db = firebaseApp.firestore();
 if (! window['auth']) { auth = firebaseApp.auth(); }
