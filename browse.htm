@@ -99,12 +99,12 @@
                 if (!listItem) {
                   // Create a new list item element
                   const listItem = document.createElement('li');
-                  listItem.name=childData.name
+                  listItem.name=childData.email
                   listItem.classList.add('list-item');
 
                   // Create a span element for the user name
                   const nameSpan = document.createElement('span');
-                  nameSpan.textContent = childData;
+                  nameSpan.textContent = childData.email;
 
                   // Create a span element for the mute icon
                   const muteSpan = document.createElement('span');
