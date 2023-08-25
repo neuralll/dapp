@@ -127,7 +127,13 @@
 
       }
       onload=function(){
-        renderusers()
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            renderusers()
+          } else {
+            // No user is signed in.
+          }
+        });  
       }
 
     </script>
