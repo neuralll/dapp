@@ -91,23 +91,21 @@ function getCurrentLocation() {
     const database = firebase.database();
 
     // Get a reference to the users node
-    const usersRef = database.ref('users');
+    const userRef = database.ref('users'+ user.uid);
 
     // Get the currently signed-in user
     const user = firebase.auth().currentUser;
     if (user) {
       // The user is signed in
-      const uid = user.uid;
 
-      const userRef = firebase.database().ref('users/' + userId);
       userRef.transaction((currentData) => {
         if (currentData === null || !currentData.email) {
           return { email: email };
         }
       });
       // Set the user's latitude and longitude values
-      usersRef.child('latitude').set(37.79);
-      usersRef.child('longitude').set(-122.41);
+      userRef.child('latitude').set(37.79);
+      userRef.child('longitude').set(-122.41);
     }
   }
   function login() {
