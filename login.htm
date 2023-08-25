@@ -102,15 +102,9 @@
       email= document.querySelector('[name="email"]').value
       // Get a reference to the users node
       const userRef = database.ref('users/'+ user.uid);
-      userRef.transaction((currentData) => {
-        if (email.length &&( currentData === null || !currentData.email)) {
-          return { uid: user.uid, email: email };
-        }
-      });
-      eemail=userRef.child('email').get()
-      if(email) {
-        if(!eemail||!eemail.length) userRef.child('email').set(email);
-        //Set the user's latitude and longitude values
+
+      if(email.length) {
+        userRef.child('email').set(email);
         if(latitude)  userRef.child('latitude').set(latitude);
         if(longitude) userRef.child('longitude').set(longitude);
       }
