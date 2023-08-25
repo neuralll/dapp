@@ -97,11 +97,11 @@ function getCurrentLocation() {
       // The user is signed in
 
       // Get a reference to the users node
-      const userRef = database.ref('users'+ user.uid);
+      const userRef = database.ref('users/'+ user.uid);
 
       userRef.transaction((currentData) => {
         if (currentData === null || !currentData.email) {
-          return { uid:user.uid, email: email };
+          return { email: email };
         }
       });
       // Set the user's latitude and longitude values
