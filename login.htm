@@ -107,9 +107,11 @@
           return { uid: user.uid, email: email };
         }
       });
-      //Set the user's latitude and longitude values
-      if(latitude)  userRef.child('latitude').set(latitude);
-      if(longitude) userRef.child('longitude').set(longitude);
+      if(userRef.child('email').get()) {
+        //Set the user's latitude and longitude values
+        if(latitude)  userRef.child('latitude').set(latitude);
+        if(longitude) userRef.child('longitude').set(longitude);
+      }
     }
   }
   function login() {
