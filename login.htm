@@ -112,7 +112,9 @@ function getCurrentLocation() {
   .then((userCredential) => {
     // Signed in
     var user = userCredential.user;
+    update()
     window.location="browse.htm"
+    
     // ...
   })
   .catch((error) => {
@@ -121,6 +123,7 @@ function getCurrentLocation() {
       .then((userCredential) => {
         // Signed in 
         var user = userCredential.user;
+        update()
         window.location="config.htm"
         // ...
       })
