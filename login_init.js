@@ -1,5 +1,6 @@
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
  firebaseConfig = {
+  databaseURL: "https://lonely-heart-dating-app-default-rtdb.asia-southeast1.firebasedatabase.app",
   apiKey: "AIzaSyDegx3w_FuITCkZyfBzeBEyZcstla6KiFU",
   authDomain: "neuralll.github.io",
   projectId: "lonely-heart-dating-app",
