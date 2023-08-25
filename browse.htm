@@ -43,10 +43,24 @@
         padding:5px
       }
   
+      .list {
+        font-family: 'San Francisco', Helvetica, Arial, sans-serif;
+        list-style-type: none;
+        padding-left: 0;
+        margin-top: 4rem;
+      }
+
       .list-item {
+        padding: 1rem;
+        border-bottom: 1px solid #ccc;
         display: flex;
-        align-items: center;
         justify-content: space-between;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .list-item.selected {
+        background-color: #f0f0f0;
       }
   
       .mute-icon {
@@ -111,7 +125,15 @@
                   listItem.name=childData.email
                   listItem.classList.add('list-item');
                   listItem.innerHTML='<div class="row"><div class="column">'+childData.email+'</div><div class="mute-icon column"></div></div>'
+                  listItem.addEventListener('click', function() {
+                    // Remove 'selected' class from all items
+                    document.querySelectorAll('.list-item').forEach(el => {
+                      el.classList.remove('selected');
+                    });
 
+                    // Add 'selected' class to clicked item
+                    this.classList.add('selected');
+                  });
                   // Append the list item to the list
                   list.appendChild(listItem);
                 } else{
