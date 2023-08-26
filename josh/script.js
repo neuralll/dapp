@@ -20,4 +20,18 @@ document.addEventListener('DOMContentLoaded', function () {
             item.classList.add('active');
         });
     });
+    const saveButton = document.getElementById('save-button');
+    const saveMessage = document.querySelector('.save-message');
+
+    if (saveButton && saveMessage) {
+        saveButton.addEventListener('click', function () {
+            // Show the save message when the Save button is clicked
+            saveMessage.style.display = 'block';
+
+            // Hide the message after a few seconds (e.g., 3 seconds)
+            setTimeout(function () {
+                saveMessage.style.display = 'none';
+            }, 3000); // 3000 milliseconds = 3 seconds
+        });
+    }
 });
