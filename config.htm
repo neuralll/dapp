@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
     <!--
     Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
         https://cordova.apache.org/docs/en/latest/
@@ -15,17 +16,68 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-    <meta name="color-scheme" content="light dark">
+    <!-- <meta name="color-scheme" content="light dark"> -->
     <script src="https://www.gstatic.com/firebasejs/10.3.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.3.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth-compat.js"></script>
     <script src="login_init.js"></script>
-    <script src="login_status.js"></script>
   </head>
   <body>
-    <h1>Config</h1>
-    <div id="sign-in-status"></div>
-    <div id="sign-in"></div>
-    <pre id="account-details"></pre>
+  <div class="container">
+    <!-- Personal Info -->
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name">
+
+      <label for="age">Age</label>
+      <select id="age" name="age">
+        <option value="" disabled selected>Select your age</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <!-- ... -->
+        <option value="99">99</option>
+        <option value="100">100</option>
+      </select>
+
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="about-me">About Me</label>
+      <textarea id="about-me" name="about-me" rows="4"></textarea>
+    </div>
+    <div>
+      <label for="search-gender">Search Gender</label>
+      <select id="search-gender" name="search-gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="search-distance">Search Distance</label>
+      <select id="search-distance" name="search-distance">
+        <option value="18">1km</option>
+        <option value="19">10km</option>
+        <option value="19">50km</option>
+        <option value="19">100km</option>
+      </select>
+
+      <label for="search-age">Search Age</label>
+      <select id="search-age" name="search-age">
+        <option value="" disabled selected>Select your age</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <!-- ... -->
+        <option value="99">99</option>
+        <option value="100">100</option>
+      </select>
+    </div>
+
+    <!-- Save Button -->
+    <button onclick='window.location="browse.htm"' class="button button-outline">Save</button>
+  </div>
   </body>
 </html>
