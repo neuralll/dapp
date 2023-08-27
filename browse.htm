@@ -132,6 +132,7 @@
                   const listItem = document.createElement('li');
                   listItem.onclick="selectRow(this)"
                   listItem.name=childData.email
+                  listItem.data=childData
                   listItem.classList.add('list-item');
                   listItem.innerHTML='<div class="row"><div class="column">'+childData.email+'</div><div class="mute-icon column"></div></div>'
                   listItem.addEventListener('click', function() {
