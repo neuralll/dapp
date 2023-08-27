@@ -101,7 +101,7 @@
       // The user is signed in
       email= document.querySelector('[name="email"]').value
       // Get a reference to the users node
-      const userRef = database.ref('users/'+ user.uid);
+      const userRef = database.ref('users/details'+ user.uid);
 
       if(email.length) {
         userRef.child('email').set(email);
