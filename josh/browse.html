@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dating App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Lonely Hearth</h1>
+        <nav>
+            <ul>
+                <li><a href="#edit-profile">Edit Profile</a></li>
+                <li><a href="#settings">Settings</a></li>
+                <li><a href="#matches">Matches</a></li>
+                <li><a href="#location">Set Location</a></li>
+                <li><a href="#interests">Set Interests</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="edit-profile">
+        <h2>Edit Profile</h2>
+        <!-- Form for editing profile -->
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+            <label for="bio">Bio:</label>
+            <textarea id="bio" name="bio" placeholder="Write a short bio about yourself"></textarea>
+
+            <label for="profile-picture">Profile Picture:</label>
+            <input type="file" id="profile-picture" name="profile-picture">
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" placeholder="Enter your age" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <button type="submit" id="save-button">Save</button>
+            <div class="save-message" style="display: none;">Your changes have been saved</div>
+        </form>
+    </section>
+
+    <section id="settings">
+        <h2>Settings</h2>
+        <ul>
+            <li><a href="#help">Help</a></li>
+            <li><a href="#security">Security</a></li>
+            <li><a href="#block-users">Block Users</a></li>
+            <li><a href="#privacy">Privacy</a></li>
+        </ul>
+    </section>
+
+    <section id="matches">
+        <h2>Matches</h2>
+        <!-- Display user's matches here -->
+        <ul>
+            <li>Josh </li>
+            <li>ladislav</li>
+            <li>Farjana</li>
+            <li>Alfred</li>
+            <li>Maya</li>
+            <li>Julian</li>
+            <!-- Add more matches dynamically -->
+        </ul>
+    </section>
+
+    <section id="location">
+        <h2>Set Location</h2>
+        <!-- Form for setting user's location -->
+        <form>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" placeholder="Enter your location" required>
+
+            <button type="submit">Save</button>
+        </form>
+    </section>
+
+    <section id="interests">
+        <h2>Set Interests</h2>
+        <!-- Form for setting user's interests -->
+        <form>
+            <label for="interests">Interests:</label>
+            <input type="text" id="interests" name="interests" placeholder="Enter your interests (e.g., hiking, music)" required>
+
+            <button type="submit">Save</button>
+        </form>
+    </section>
+
+    <section id="privacy">
+        <h2>Privacy</h2>
+        <!-- Add privacy settings here -->
+        <p>Choose who can see your profile:</p>
+        <label><input type="radio" name="privacy" value="public"> Public</label>
+        <label><input type="radio" name="privacy" value="private"> Private</label>
+
+        <p>Receive notifications:</p>
+        <label><input type="checkbox" name="notifications" value="email"> Email</label>
+        <label><input type="checkbox" name="notifications" value="push"> Push</label>
+
+        <button type="submit">Save</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Dating App</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
