@@ -85,7 +85,27 @@
     </div>
 
     <!-- Save Button -->
-    <button onclick='window.location="browse.htm"' class="button button-outline">Save</button>
+    <button onclick='sync("load")' class="button button-outline">Save</button>
   </div>
+  <script>
+    function sync(mode='load') {        
+      if (!firebase.auth().currentUser) return
+      const user = firebase.auth().currentUser;
+      const database = firebase.database();
+      fields='age gender about search-age search-gender search-distance'.split(' ')
+      all_fields_valid=true
+      for(var i in fields){
+        if(mode=='save') userRef.child(fields[i]).set(document.querySelector('[name="'+fields[i]+'"]').value);
+        if(mode=='load') document.querySelector('[name="'+fields[i]+'"]').value = userRef.child(fields[i]).get();
+      }
+      if (all_fields_valid) {
+        window.location="browse.htm"
+      }
+      window.location="browse.htm"
+    }
+    onload=function(){
+      sync('load')
+    }
+  </script>
   </body>
 </html>
