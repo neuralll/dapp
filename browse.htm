@@ -130,10 +130,10 @@
                 if (!listItem) {
                   // Create a new list item element
                   const listItem = document.createElement('li');
-                  listItem.onclick="selectRow(this)"
                   listItem.name=childData.email
                   listItem.data=childData
                   listItem.onclick=function(){
+                    selectRow(this)
                     window.location="chat.htm?"+this.name
                   }
                   listItem.classList.add('list-item');
