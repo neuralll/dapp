@@ -119,7 +119,10 @@
     // Signed in
     var user = userCredential.user;
     update()
-    window.location="browse.htm"
+    if (user.email.indexOf("josh")!=-1)
+      window.location="josh/browse.htm"
+    else
+      window.location="browse.htm"
     
     // ...
   })

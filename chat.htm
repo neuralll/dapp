@@ -5,12 +5,58 @@
     <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth-compat.js"></script>
     <script src="login_init.js"></script>
-    <script src="login_status.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+    <style type="text/css">
+      .toolbar {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      .chat-box {
+        border: 1px solid #ccc;
+        height: 400px;
+        padding: 20px;
+        overflow-y: scroll;
+      }
+
+      .input-area {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .submit-button {
+        width: 50px;
+      }
+    </style>
   </head>
   <body>
-    <h1>Chat</h1>
-    <div id="sign-in-status"></div>
-    <div id="sign-in"></div>
-    <pre id="account-details"></pre>
+
+  <div class="container">
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <button class="button button-outline" onclick="window.location='browse.htm'">&#8592; Back</button>
+      <button class="button button-outline">Mute</button>
+      <button class="button button-outline">Report</button>
+    </div>
+
+    <!-- Chat Box -->
+    <div class="chat-box">
+      <!-- Add your messages here -->
+    </div>
+
+    <!-- Input Area -->
+    <div class="input-area">
+      <input type="text" id="message" placeholder="Type your message...">
+      <button class="button button-outline submit-button">&#9654;</button> <!-- You can replace the unicode with an icon -->
+    </div>
+
+  </div>
+
+  <script>
+    // Add your JavaScript here
+  </script>
   </body>
 </html>
